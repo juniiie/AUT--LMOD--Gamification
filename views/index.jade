@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  image(id="header", src="/images/LMxAUT_long.png")
+  h1= title
+  p Welcome to the #{title}
+
+  //- Canvas for the post estimation outputs
+  div(class="wrapper")
+    canvas(id="outputCamera")
+    canvas(id="outputImg")
+    video(id="video", playsinline)
+    p(style='white-space:pre;') 
+      | #{instructTitle}
+      | #{instruct1} 
+      | #{instruct2} 
+      | #{instruct3}
+    p(style='white-space:pre;') 
+      | #{keyTitle} 
+      | #{key1} 
+      | #{key2} 
+      | #{key3}
+
+  //- The div for the information if the camera is not working
+  div(id="info")
+
+  //- Run the Browserify script
+  script(src="/javascripts/bundle.js", type="module")
+
+  //- Runs the scripts for the pose estimation
+  script(id="armsOut",src="/javascripts/instructors/instructorArmsOut.js",type="module") 
+  //-script(id="armsBySide",src="/javascripts/instructors/instructorArmsBySide.js", type="module") 
+
+  //- Example way to create a model from an image - uncomment to use
+  //- image(id="image", src="/images/ryan.jpg", type="image")
+  //- script(src="/javascripts/image.js", type="module")
